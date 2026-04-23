@@ -44,19 +44,32 @@ export function AllCollections({ onClose, scrollToCategory }: { onClose: () => v
 
     if (containerRef.current) {
       const overlay = containerRef.current;
-      gsap.fromTo(overlay, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" });
+      
+      // Luxurious Modal Entrance (Slide up from bottom)
+      gsap.fromTo(overlay, 
+        { opacity: 0, y: "100%" }, 
+        { opacity: 1, y: "0%", duration: 0.9, ease: "expo.out" }
+      );
+
+      // Header and text entrance
+      const headerElements = overlay.querySelectorAll('header, h1, p');
+      gsap.fromTo(headerElements,
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: "power3.out", delay: 0.3 }
+      );
 
       const cards = containerRef.current.querySelectorAll('.collection-card');
       
       gsap.fromTo(cards, 
-        { y: 60, opacity: 0 },
+        { y: 80, opacity: 0, scale: 0.95 },
         { 
           y: 0, 
           opacity: 1, 
-          duration: 0.8, 
-          stagger: 0.04, 
+          scale: 1,
+          duration: 1, 
+          stagger: 0.05, 
           ease: "expo.out",
-          delay: 0.1,
+          delay: 0.4,
           onComplete: () => {
             // After entrance animation, scroll to the target category if provided
             if (scrollToCategory && containerRef.current) {
@@ -80,8 +93,9 @@ export function AllCollections({ onClose, scrollToCategory }: { onClose: () => v
     if (containerRef.current) {
         gsap.to(containerRef.current, {
             opacity: 0,
-            duration: 0.4,
-            ease: "power2.inOut",
+            y: "100%",
+            duration: 0.6,
+            ease: "expo.inOut",
             onComplete: onClose
         });
     } else {
