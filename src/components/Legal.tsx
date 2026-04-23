@@ -45,6 +45,7 @@ export function Legal({ onClose }: { onClose: () => void }) {
     <div ref={containerRef} className="fixed inset-0 z-[500] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 md:p-8 overflow-y-auto">
       <div 
         ref={contentRef}
+        data-lenis-prevent="true"
         className="bg-[#121212] w-full max-w-[900px] min-h-[80vh] max-h-[90vh] border border-[#2a2a2a] rounded-xl shadow-2xl flex flex-col md:flex-row relative overflow-hidden"
       >
         {/* Mobile Header (Only visible on small screens) */}

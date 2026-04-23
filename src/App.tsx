@@ -133,8 +133,9 @@ export default function App() {
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      syncTouch: true,
-      smoothTouch: true,
+      smoothWheel: true,
+      syncTouch: false,
+      smoothTouch: false,
       wheelMultiplier: 1,
       touchMultiplier: 2,
     });
@@ -325,7 +326,7 @@ export default function App() {
 
       {showHamburgerMenu && (
         <div className="fixed inset-0 z-[450] flex">
-          <div className="w-[320px] max-w-[80vw] h-full bg-[#121212] border-r border-[#2a2a2a] p-6 overflow-y-auto shadow-2xl flex flex-col">
+          <div data-lenis-prevent="true" className="w-[320px] max-w-[80vw] h-full bg-[#121212] border-r border-[#2a2a2a] p-6 overflow-y-auto shadow-2xl flex flex-col">
             <div className="flex items-center justify-between mb-8">
               <div>
                 <p className="text-[11px] uppercase tracking-[3px] text-[#A9A9A9] mb-1">Menu</p>
@@ -908,7 +909,7 @@ export default function App() {
         </div>
         <div className="flex gap-[30px] md:gap-[50px] text-[10px] md:text-[11px] tracking-[3px] uppercase font-medium text-text-secondary items-center">
             <a href="#collection" className="hover:text-gold transition-colors duration-300">Shop</a>
-            <a href="#atelier" className="hover:text-gold transition-colors duration-300 hidden sm:block">Atelier</a>
+            <a href="#atelier" className="hover:text-gold transition-colors duration-300">Atelier</a>
             <a href="#contact" className="hover:text-gold transition-colors duration-300">Contact</a>
             <button 
               onClick={() => setShowWishlist(true)}

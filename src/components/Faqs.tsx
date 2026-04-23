@@ -109,6 +109,7 @@ export function Faqs({ onClose }: { onClose: () => void }) {
     <div ref={containerRef} className="fixed inset-0 z-[500] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 md:p-8 overflow-y-auto">
       <div 
         ref={contentRef}
+        data-lenis-prevent="true"
         className="bg-[#121212] w-full max-w-[800px] min-h-[70vh] max-h-[90vh] border border-[#2a2a2a] rounded-xl shadow-2xl flex flex-col relative overflow-hidden"
       >
         {/* Header */}
