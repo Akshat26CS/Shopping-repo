@@ -58,6 +58,33 @@ export function ProductDetails({ item, onClose }: { item: CategoryItem; onClose:
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [checkoutItems, setCheckoutItems] = useState<any[]>([]);
 
+  // Swipe state for mobile
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const onTouchStart = (e: any) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: any) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEndHandler = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    
+    if (distance > 50) { // Swipe Left -> Next
+      // We'll reference images.length safely inside the handler by getting max index
+      setActiveImage((prev) => (prev === 3 ? 0 : prev + 1));
+      setIsZoomed(false);
+    } else if (distance < -50) { // Swipe Right -> Prev
+      setActiveImage((prev) => (prev === 0 ? 3 : prev - 1));
+      setIsZoomed(false);
+    }
+  };
+
   // Delivery state
   const [pincode, setPincode] = useState('');
   const [deliveryStatus, setDeliveryStatus] = useState<'idle' | 'checking' | 'success' | 'error'>('idle');
@@ -351,7 +378,12 @@ export function ProductDetails({ item, onClose }: { item: CategoryItem; onClose:
           <div className="w-full md:w-[55%] h-[65vh] md:h-full relative bg-black flex group shrink-0">
             
             {/* Main Slider Area */}
-            <div className="w-full h-full relative overflow-hidden">
+            <div 
+              className="w-full h-full relative overflow-hidden"
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEndHandler}
+            >
                 <img 
                     src={images[activeImage]} 
                     alt={item.title}
