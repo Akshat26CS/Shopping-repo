@@ -507,7 +507,7 @@ export function ProductDetails({ item, onClose }: { item: CategoryItem; onClose:
                                     setDeliveryStatus('idle');
                                 }
                             }}
-                            className={`bg-[#1a1a1a] border ${deliveryStatus === 'error' ? 'border-red-500' : deliveryStatus === 'success' ? 'border-green-500' : 'border-[#2a2a2a]'} text-white px-3 py-2 w-full text-[11px] tracking-[1px] outline-none focus:border-[#D4AF37] transition-colors rounded-sm`}
+                            className={`bg-[#1a1a1a] border ${deliveryStatus === 'error' ? 'border-red-500' : deliveryStatus === 'success' ? 'border-green-500' : 'border-[#2a2a2a]'} text-white px-3 py-2 w-full text-[16px] md:text-[11px] tracking-[1px] outline-none focus:border-[#D4AF37] transition-colors rounded-sm`}
                         />
                         <button 
                             onClick={checkDelivery}
