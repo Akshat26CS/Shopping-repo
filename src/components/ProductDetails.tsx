@@ -337,18 +337,18 @@ export function ProductDetails({ item, onClose }: { item: CategoryItem; onClose:
         className="fixed inset-0 z-[180] overflow-hidden"
         style={{ willChange: "transform", transformOrigin: "center center" }}
       >
-        <div className="absolute inset-0 w-full h-full bg-[#121212] rounded-none overflow-hidden flex flex-col md:flex-row shadow-2xl border border-[#2a2a2a]">
+        <div data-lenis-prevent="true" className="absolute inset-0 w-full h-full bg-[#121212] rounded-none overflow-y-auto md:overflow-hidden flex flex-col md:flex-row shadow-2xl border border-[#2a2a2a]">
           
           {/* Close Button */}
           <button 
             onClick={handleClose} 
-            className="absolute top-4 right-4 z-50 w-10 h-10 flex items-center justify-center bg-black/50 hover:bg-[#D4AF37] backdrop-blur-md rounded-full text-white transition-all duration-300 active:scale-90"
+            className="fixed md:absolute top-4 right-4 z-50 w-10 h-10 flex items-center justify-center bg-black/50 hover:bg-[#D4AF37] backdrop-blur-md rounded-full text-white transition-all duration-300 active:scale-90"
           >
             <X className="w-5 h-5" />
           </button>
 
           {/* LEFT: Visual Gallery */}
-          <div className="w-full md:w-[55%] h-full relative bg-black flex group shrink-0">
+          <div className="w-full md:w-[55%] h-[65vh] md:h-full relative bg-black flex group shrink-0">
             
             {/* Main Slider Area */}
             <div className="w-full h-full relative overflow-hidden">
@@ -380,7 +380,7 @@ export function ProductDetails({ item, onClose }: { item: CategoryItem; onClose:
           </div>
 
           {/* RIGHT: Product Information */}
-          <div ref={rightPanelRef} className="w-full md:w-[45%] h-full overflow-y-auto bg-[#121212] px-6 py-8 md:px-8 shrink-0">
+          <div ref={rightPanelRef} className="w-full md:w-[45%] h-auto md:h-full overflow-y-visible md:overflow-y-auto bg-[#121212] px-6 py-8 md:px-8 shrink-0">
             <div className="max-w-full">
                 
                 {/* Header */}
