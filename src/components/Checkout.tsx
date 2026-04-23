@@ -66,6 +66,14 @@ export function Checkout({ cartItems, onClose, onSuccess }: CheckoutProps) {
     setOrderData(prev => ({ ...prev, [name]: value }));
   };
 
+  const handleContinueToPayment = () => {
+    if (!orderData.name || !orderData.email || !orderData.phone || !orderData.address || !orderData.city || !orderData.postalCode) {
+      alert('Please fill in all shipping details before continuing.');
+      return;
+    }
+    setStep('payment');
+  };
+
   const handlePlaceOrder = async () => {
     if (!orderData.name || !orderData.email || !orderData.phone || !orderData.address || !orderData.city || !orderData.postalCode) {
       alert('Please fill all fields');
@@ -297,7 +305,7 @@ export function Checkout({ cartItems, onClose, onSuccess }: CheckoutProps) {
                 </div>
 
                 <button
-                  onClick={() => setStep('payment')}
+                  onClick={handleContinueToPayment}
                   className="w-full py-3 bg-white text-black uppercase tracking-[2px] text-[12px] font-bold hover:bg-[#D4AF37] transition-all duration-300 rounded-lg mt-6"
                 >
                   Continue to Payment
