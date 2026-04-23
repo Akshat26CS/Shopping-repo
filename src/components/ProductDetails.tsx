@@ -90,13 +90,28 @@ export function ProductDetails({ item, onClose }: { item: CategoryItem; onClose:
   const [deliveryStatus, setDeliveryStatus] = useState<'idle' | 'checking' | 'success' | 'error'>('idle');
   const [deliveryMessage, setDeliveryMessage] = useState('');
 
-  // Derive extra gallery images (mocking variations for luxury feel)
-  const images = [
-    item.imageSrc,
-    "https://images.unsplash.com/photo-1595777707802-c8468c7bc895?q=80&w=1500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?q=80&w=1500&auto=format&fit=crop"
-  ];
+  // Generate matching closeup variations using Unsplash focal point cropping
+  const generateGallery = (url: string) => {
+    if (!url.includes('unsplash.com')) {
+      return [
+        url,
+        "https://images.unsplash.com/photo-1595777707802-c8468c7bc895?q=80&w=1500&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1500&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?q=80&w=1500&auto=format&fit=crop"
+      ];
+    }
+    
+    // Base URL without existing crop parameters
+    const base = url.split('&crop=')[0]; 
+    return [
+      url, 
+      base + '&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=2', // Upper detail (torso/neckline)
+      base + '&crop=focalpoint&fp-x=0.5&fp-y=0.6&fp-z=2.5', // Mid detail (waist/fabric)
+      base + '&crop=focalpoint&fp-x=0.5&fp-y=0.8&fp-z=3', // Lower detail (border/hem)
+    ];
+  };
+
+  const images = generateGallery(item.imageSrc);
 
   useEffect(() => {
     fetchCart();
