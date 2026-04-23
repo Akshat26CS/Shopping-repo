@@ -58,8 +58,25 @@ export default function App() {
     birthday: ''
   });
 
-  const [userEmail, setUserEmail] = useState('');
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [userEmail, setUserEmail] = useState(() => localStorage.getItem('userEmail') || '');
+  const [isAdmin, setIsAdmin] = useState(() => localStorage.getItem('isAdmin') === 'true');
+  
+  // Persist auth state across page refreshes
+  useEffect(() => {
+    if (userEmail) {
+      localStorage.setItem('userEmail', userEmail);
+    } else {
+      localStorage.removeItem('userEmail');
+    }
+  }, [userEmail]);
+
+  useEffect(() => {
+    if (isAdmin) {
+      localStorage.setItem('isAdmin', 'true');
+    } else {
+      localStorage.removeItem('isAdmin');
+    }
+  }, [isAdmin]);
   
   useEffect(() => {
     const test = async () => {
