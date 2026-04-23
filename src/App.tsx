@@ -185,6 +185,7 @@ export default function App() {
                 start: "top top",
                 end: () => `+=${scroll.scrollWidth}`, // scroll for the length of the container
                 pin: true,
+                anticipatePin: 1, // Fixes the 1-second freeze on mobile unpin
                 scrub: scrubValue, // Reduced for snappier mobile feel while remaining smooth
                 invalidateOnRefresh: true
             }
@@ -1045,7 +1046,7 @@ export default function App() {
 
       {/* 4. Full Width Editorial Parallax */}
       <section className="relative h-[60dvh] lg:h-[80vh] w-full overflow-hidden flex items-center justify-center perspective-wrap border-b border-border-dark">
-         <img src="https://images.unsplash.com/photo-1605792657660-596af9009e82?q=80&w=2500&auto=format&fit=crop" className="absolute inset-0 w-full h-full object-cover parallax-bg scale-[1.3] opacity-40 z-0" style={{ willChange: "transform" }}/>
+         <img src="https://images.unsplash.com/photo-1605792657660-596af9009e82?q=80&w=1200&auto=format&fit=crop" className="absolute inset-0 w-full h-full object-cover parallax-bg scale-[1.3] opacity-40 z-0" style={{ willChange: "transform" }}/>
          <div className="absolute inset-0 bg-gradient-to-b from-bg-dark via-transparent to-bg-dark z-0"></div>
          
          <div className="relative z-10 text-center max-w-[800px] px-6">
