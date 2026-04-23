@@ -907,7 +907,7 @@ export default function App() {
             VANDANA
           </div>
         </div>
-        <div className="flex gap-[20px] md:gap-[50px] text-[10px] md:text-[11px] tracking-[3px] uppercase font-medium text-text-secondary items-center">
+        <div className="flex gap-[10px] sm:gap-[20px] md:gap-[50px] text-[10px] md:text-[11px] tracking-[3px] uppercase font-medium text-text-secondary items-center">
             <a href="#collection" className="hover:text-gold transition-colors duration-300">Shop</a>
             <a href="#atelier" className="hover:text-gold transition-colors duration-300 hidden md:block">Atelier</a>
             <a href="#contact" className="hover:text-gold transition-colors duration-300 hidden md:block">Contact</a>
