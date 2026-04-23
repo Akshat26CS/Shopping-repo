@@ -526,12 +526,12 @@ export function ProductDetails({ item, onClose }: { item: CategoryItem; onClose:
 
                 {/* Tab Navigation */}
                 <div className="mb-6 pb-6 border-b border-[#2a2a2a]">
-                    <div className="flex gap-2 mb-4">
+                    <div className="flex overflow-x-auto gap-1 md:gap-2 mb-4 pb-2 scrollbar-hide">
                         {['overview', 'description', 'care', 'styling'].map((tab) => (
                             <button
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
-                                className={`px-4 py-2 text-[10px] uppercase tracking-[2px] font-medium transition-all duration-300 ${
+                                className={`px-3 md:px-4 py-2 text-[9px] md:text-[10px] uppercase tracking-[1px] md:tracking-[2px] font-medium transition-all duration-300 whitespace-nowrap flex-shrink-0 ${
                                     activeTab === tab ? 'text-[#D4AF37] border-b-2 border-[#D4AF37]' : 'text-[#A9A9A9] hover:text-white'
                                 }`}
                             >
