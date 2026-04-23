@@ -11,23 +11,23 @@ interface CategoryItem {
 
 const CATEGORY_DATA: Record<string, CategoryItem[]> = {
   Sarees: [
-    { title: 'Banarasi Silk', imageSrc: 'https://images.unsplash.com/photo-1618901185975-d59f7091bcfe?q=80&w=800&auto=format&fit=crop', price: 85000 },
-    { title: 'Kanjeevaram', imageSrc: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop', price: 120000 },
-    { title: 'Chiffon', imageSrc: 'https://images.unsplash.com/photo-1679006831648-7c9ea12e5807?q=80&w=800&auto=format&fit=crop', price: 45000 },
-    { title: 'Georgette', imageSrc: 'https://images.unsplash.com/photo-1610173827043-9db50e0d8ef9?q=80&w=800&auto=format&fit=crop', price: 55000 },
-    { title: 'Organza', imageSrc: 'https://images.unsplash.com/photo-1692992193981-d3d92fabd9cb?q=80&w=800&auto=format&fit=crop', price: 65000 },
-    { title: 'Designer', imageSrc: 'https://images.unsplash.com/photo-1610189012906-4c0aa9b9781e?q=80&w=800&auto=format&fit=crop', price: 180000 },
+    { title: 'Banarasi Silk', imageSrc: 'https://images.unsplash.com/photo-1618901185975-d59f7091bcfe?q=80&w=400&auto=format&fit=crop', price: 85000 },
+    { title: 'Kanjeevaram', imageSrc: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=400&auto=format&fit=crop', price: 120000 },
+    { title: 'Chiffon', imageSrc: 'https://images.unsplash.com/photo-1679006831648-7c9ea12e5807?q=80&w=400&auto=format&fit=crop', price: 45000 },
+    { title: 'Georgette', imageSrc: 'https://images.unsplash.com/photo-1610173827043-9db50e0d8ef9?q=80&w=400&auto=format&fit=crop', price: 55000 },
+    { title: 'Organza', imageSrc: 'https://images.unsplash.com/photo-1692992193981-d3d92fabd9cb?q=80&w=400&auto=format&fit=crop', price: 65000 },
+    { title: 'Designer', imageSrc: 'https://images.unsplash.com/photo-1610189012906-4c0aa9b9781e?q=80&w=400&auto=format&fit=crop', price: 180000 },
   ],
   Kurtis: [
-    { title: 'Everyday Wear', imageSrc: 'https://images.unsplash.com/photo-1741847639057-b51a25d42892?q=80&w=800&auto=format&fit=crop', price: 12000 },
-    { title: 'Anarkali', imageSrc: 'https://images.unsplash.com/photo-1745313452052-0e4e341f326c?q=80&w=800&auto=format&fit=crop', price: 35000 },
-    { title: 'Short Kurtis', imageSrc: 'https://images.unsplash.com/photo-1708534419572-6e6614a53ca1?q=80&w=800&auto=format&fit=crop', price: 8500 },
-    { title: 'Festive Sets', imageSrc: 'https://images.unsplash.com/photo-1668371679302-a8ec781e876e?q=80&w=800&auto=format&fit=crop', price: 48000 },
+    { title: 'Everyday Wear', imageSrc: 'https://images.unsplash.com/photo-1741847639057-b51a25d42892?q=80&w=400&auto=format&fit=crop', price: 12000 },
+    { title: 'Anarkali', imageSrc: 'https://images.unsplash.com/photo-1745313452052-0e4e341f326c?q=80&w=400&auto=format&fit=crop', price: 35000 },
+    { title: 'Short Kurtis', imageSrc: 'https://images.unsplash.com/photo-1708534419572-6e6614a53ca1?q=80&w=400&auto=format&fit=crop', price: 8500 },
+    { title: 'Festive Sets', imageSrc: 'https://images.unsplash.com/photo-1668371679302-a8ec781e876e?q=80&w=400&auto=format&fit=crop', price: 48000 },
   ],
   'Ethnic Dresses': [
-    { title: 'Indo-Western Gowns', imageSrc: 'https://images.unsplash.com/photo-1656574781686-40935ee15db5?q=80&w=800&auto=format&fit=crop', price: 145000 },
-    { title: 'Maxi Dresses', imageSrc: 'https://images.unsplash.com/photo-1612336307429-8a898d10e223?q=80&w=800&auto=format&fit=crop', price: 28000 },
-    { title: 'Co-ord Sets', imageSrc: 'https://images.unsplash.com/photo-1686173554823-0e25d1d6e45f?q=80&w=800&auto=format&fit=crop', price: 22000 },
+    { title: 'Indo-Western Gowns', imageSrc: 'https://images.unsplash.com/photo-1656574781686-40935ee15db5?q=80&w=400&auto=format&fit=crop', price: 145000 },
+    { title: 'Maxi Dresses', imageSrc: 'https://images.unsplash.com/photo-1612336307429-8a898d10e223?q=80&w=400&auto=format&fit=crop', price: 28000 },
+    { title: 'Co-ord Sets', imageSrc: 'https://images.unsplash.com/photo-1686173554823-0e25d1d6e45f?q=80&w=400&auto=format&fit=crop', price: 22000 },
   ]
 };
 
@@ -158,10 +158,11 @@ export function AllCollections({ onClose, scrollToCategory }: { onClose: () => v
               {/* Dense Small Card CSS Grid */}
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 md:gap-6 lg:gap-8">
                 {items.map((item, idx) => (
-                  <div 
+                    <div 
                     key={idx} 
                     onClick={() => setSelectedProduct(item)}
-                    className="collection-card group overflow-hidden relative cursor-pointer aspect-[4/5] bg-black hover:!opacity-100 group-hover/grid:opacity-40 transition-opacity duration-500"
+                    className="collection-card opacity-0 group overflow-hidden relative cursor-pointer aspect-[4/5] bg-black hover:!opacity-100 group-hover/grid:opacity-40 transition-opacity duration-500"
+                    style={{ willChange: "transform, opacity" }}
                   >
                     <div className="absolute inset-0 bg-[#000000]">
                         <img 
@@ -169,7 +170,9 @@ export function AllCollections({ onClose, scrollToCategory }: { onClose: () => v
                             alt={item.title} 
                             crossOrigin="anonymous"
                             referrerPolicy="no-referrer"
-                            className="absolute inset-0 w-full h-full object-cover grayscale-[40%] opacity-70 group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-out"
+                            loading="lazy"
+                            decoding="async"
+                            className="absolute inset-0 w-full h-full object-cover md:grayscale-[40%] opacity-70 group-hover:scale-105 md:group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-out"
                             style={{ willChange: "transform" }}
                         />
                     </div>
