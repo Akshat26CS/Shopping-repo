@@ -149,6 +149,9 @@ export default function App() {
     // Disable lag smoothing to prevent physics desync between scrolling and scroll-bound animations
     gsap.ticker.lagSmoothing(0);
 
+    const isMobile = window.innerWidth <= 768;
+    const scrubValue = isMobile ? true : 1.5;
+
     // 2. Initial Hero Reveal Animation
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
@@ -182,7 +185,7 @@ export default function App() {
                 start: "top top",
                 end: () => `+=${scroll.scrollWidth}`, // scroll for the length of the container
                 pin: true,
-                scrub: 1.5, // Reduced for snappier mobile feel while remaining smooth
+                scrub: scrubValue, // Reduced for snappier mobile feel while remaining smooth
                 invalidateOnRefresh: true
             }
         });
@@ -197,7 +200,7 @@ export default function App() {
                    trigger: wrap,
                    start: "top top",
                    end: () => `+=${scroll.scrollWidth}`,
-                   scrub: 1.5,
+                   scrub: scrubValue,
                }
            })
         });
@@ -220,7 +223,7 @@ export default function App() {
                     trigger: el,
                     start: "top 95%",
                     end: "top 40%",
-                    scrub: 1.5
+                    scrub: scrubValue
                 }
             }
         );
@@ -257,7 +260,7 @@ export default function App() {
                     trigger: bg.parentElement,
                     start: "top bottom",
                     end: "bottom top",
-                    scrub: 1.5
+                    scrub: scrubValue
                 }
             }
         );
@@ -1004,7 +1007,7 @@ export default function App() {
             
             {/* Slide 1 */}
             <div className="relative w-[75vw] md:w-[40vw] h-full shrink-0 animate-3d-scroll group cursor-pointer overflow-hidden rounded-[2px] mt-12 md:mt-0" style={{ willChange: "transform" }}>
-                <img src="https://images.unsplash.com/photo-1533659828870-95ee305cee3e?q=80&w=2164&auto=format&fit=crop" alt="Look 1" className="w-full h-full object-cover h-image grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 ease-out scale-110" style={{ willChange: "transform" }} />
+                <img src="https://images.unsplash.com/photo-1533659828870-95ee305cee3e?q=80&w=1200&auto=format&fit=crop" alt="Look 1" className="w-full h-full object-cover h-image md:grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 ease-out scale-110" style={{ willChange: "transform" }} />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-700"></div>
                 <div className="absolute bottom-6 md:bottom-10 left-6 md:left-10 translate-y-0 lg:translate-y-4 opacity-100 lg:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                     <h4 className="font-serif text-[26px] md:text-[32px] italic text-gold">The Obsidian Drape</h4>
@@ -1014,7 +1017,7 @@ export default function App() {
 
             {/* Slide 2 */}
             <div className="relative w-[75vw] md:w-[40vw] h-full shrink-0 group cursor-pointer overflow-hidden rounded-[2px] transform translate-y-0 md:translate-y-12" style={{ willChange: "transform" }}>
-                <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=2183&auto=format&fit=crop" alt="Look 2" className="w-full h-full object-cover h-image grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 ease-out scale-110" style={{ willChange: "transform" }} />
+                <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=1200&auto=format&fit=crop" alt="Look 2" className="w-full h-full object-cover h-image md:grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 ease-out scale-110" style={{ willChange: "transform" }} />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-700"></div>
                 <div className="absolute bottom-6 md:bottom-10 left-6 md:left-10 translate-y-0 lg:translate-y-4 opacity-100 lg:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                     <h4 className="font-serif text-[26px] md:text-[32px] italic text-gold">Ivory Threadwork</h4>
@@ -1024,7 +1027,7 @@ export default function App() {
 
             {/* Slide 3 */}
             <div className="relative w-[75vw] md:w-[40vw] h-full shrink-0 group cursor-pointer overflow-hidden rounded-[2px] transform -translate-y-0 md:-translate-y-12" style={{ willChange: "transform" }}>
-                <img src="https://images.pexels.com/photos/1381556/pexels-photo-1381556.jpeg?auto=compress&cs=tinysrgb&w=2000" alt="Look 3" className="w-full h-full object-cover h-image grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 ease-out scale-110" style={{ willChange: "transform" }}/>
+                <img src="https://images.pexels.com/photos/1381556/pexels-photo-1381556.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Look 3" className="w-full h-full object-cover h-image md:grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 ease-out scale-110" style={{ willChange: "transform" }}/>
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-700"></div>
                 <div className="absolute bottom-6 md:bottom-10 left-6 md:left-10 translate-y-0 lg:translate-y-4 opacity-100 lg:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                     <h4 className="font-serif text-[26px] md:text-[32px] italic text-gold">Crimson Silhouette</h4>
@@ -1062,9 +1065,9 @@ export default function App() {
             <div className="w-full lg:w-1/2 perspective-wrap">
                 <div className="relative aspect-[4/5] md:aspect-[3/4] w-full md:w-[85%] animate-3d-scroll overflow-hidden rounded-[2px] bg-surface shadow-2xl" style={{ willChange: "transform" }}>
                     <img 
-                        src="https://images.unsplash.com/photo-1617694820985-a5476fe22722?q=80&w=2000&auto=format&fit=crop" 
+                        src="https://images.unsplash.com/photo-1617694820985-a5476fe22722?q=80&w=1200&auto=format&fit=crop" 
                         alt="Artisan Craftsmanship" 
-                        className="absolute inset-0 w-full h-full object-cover parallax-bg scale-125 origin-center grayscale-[20%]"
+                        className="absolute inset-0 w-full h-full object-cover parallax-bg scale-125 origin-center md:grayscale-[20%]"
                         style={{ willChange: "transform" }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-tr from-bg-dark/80 via-transparent to-transparent pointer-events-none"></div>
@@ -1099,9 +1102,9 @@ export default function App() {
             <div className="w-full lg:w-1/2 perspective-wrap flex justify-start lg:justify-end">
                 <div className="relative aspect-[16/10] lg:aspect-[4/3] w-full lg:w-[90%] animate-3d-scroll overflow-hidden rounded-[2px] bg-surface shadow-2xl" style={{ willChange: "transform" }}>
                     <img 
-                        src="https://images.unsplash.com/photo-1551893665-f843f600794e?q=80&w=2000&auto=format&fit=crop" 
+                        src="https://images.unsplash.com/photo-1551893665-f843f600794e?q=80&w=1200&auto=format&fit=crop" 
                         alt="Legacy Silk" 
-                        className="absolute inset-0 w-full h-full object-cover parallax-bg scale-125 origin-center grayscale-[30%] brightness-75"
+                        className="absolute inset-0 w-full h-full object-cover parallax-bg scale-125 origin-center md:grayscale-[30%] brightness-75"
                         style={{ willChange: "transform" }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-tl from-bg-dark/80 via-transparent to-transparent pointer-events-none"></div>
