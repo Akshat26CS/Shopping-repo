@@ -45,31 +45,38 @@ export function AllCollections({ onClose, scrollToCategory }: { onClose: () => v
     if (containerRef.current) {
       const overlay = containerRef.current;
       
-      // Luxurious Modal Entrance (Slide up from bottom)
+      // Ultra-smooth Entrance: Fade container, slide contents
       gsap.fromTo(overlay, 
-        { opacity: 0, y: "100%" }, 
-        { opacity: 1, y: "0%", duration: 0.9, ease: "expo.out" }
+        { opacity: 0 }, 
+        { opacity: 1, duration: 0.4, ease: "power2.out" }
       );
 
-      // Header and text entrance
-      const headerElements = overlay.querySelectorAll('header, h1, p');
-      gsap.fromTo(headerElements,
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: "power3.out", delay: 0.3 }
+      // Header entrance
+      const header = overlay.querySelector('header');
+      gsap.fromTo(header,
+        { y: -20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", delay: 0.1 }
+      );
+
+      // Title entrance
+      const texts = overlay.querySelectorAll('h1, p');
+      gsap.fromTo(texts,
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power2.out", delay: 0.2 }
       );
 
       const cards = containerRef.current.querySelectorAll('.collection-card');
       
+      // Removed expensive scale transformations, simple performant slide-up
       gsap.fromTo(cards, 
-        { y: 80, opacity: 0, scale: 0.95 },
+        { y: 40, opacity: 0 },
         { 
           y: 0, 
           opacity: 1, 
-          scale: 1,
-          duration: 1, 
-          stagger: 0.05, 
-          ease: "expo.out",
-          delay: 0.4,
+          duration: 0.6, 
+          stagger: 0.03, 
+          ease: "power2.out",
+          delay: 0.3,
           onComplete: () => {
             // After entrance animation, scroll to the target category if provided
             if (scrollToCategory && containerRef.current) {
@@ -93,9 +100,8 @@ export function AllCollections({ onClose, scrollToCategory }: { onClose: () => v
     if (containerRef.current) {
         gsap.to(containerRef.current, {
             opacity: 0,
-            y: "100%",
-            duration: 0.6,
-            ease: "expo.inOut",
+            duration: 0.4,
+            ease: "power2.inOut",
             onComplete: onClose
         });
     } else {
@@ -111,7 +117,7 @@ export function AllCollections({ onClose, scrollToCategory }: { onClose: () => v
         data-lenis-prevent="true"
     >
       {/* 1. Minimalist Header & Breadcrumbs */}
-      <header className="sticky top-0 left-0 w-full z-50 h-[80px] px-6 lg:px-[60px] flex justify-between items-center bg-[#121212]/80 backdrop-blur-xl border-b border-[#2a2a2a]">
+      <header className="sticky top-0 left-0 w-full z-50 h-[80px] px-6 lg:px-[60px] flex justify-between items-center bg-[#121212] border-b border-[#2a2a2a]">
         <div className="flex items-center gap-4">
           <button 
             onClick={handleClose}
