@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Montserrat', sans-serif;
+  
+  --color-black: #000000;
+  --color-charcoal: #121212;
+  --color-ash: #2c2c2c;
+  --color-ash-light: #444444;
+
+  --color-bg-dark: #030303;
+  --color-surface: #0a0a0a;
+  --color-border-dark: #2a2a2a;
+  --color-text-primary: #f5f2ed;
+  --color-text-secondary: #9a9a9a;
+  
+  --color-gold: #D4AF37;
+  --color-gold-muted: #8c7322;
+}
+
+body {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  @apply antialiased overflow-x-hidden;
+}
+
+/* Lenis smooth scrolling styles */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Custom Selection */
+::selection {
+  background-color: var(--color-gold-muted);
+  color: var(--color-bg-dark);
+}
+
+/* Specific utilities for 3D and atmosphere */
+.glass-panel {
+  background: rgba(10, 10, 10, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(to right, #f5f2ed 0%, #D4AF37 50%, #f5f2ed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.perspective-wrap {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.reveal-mask {
+  overflow: hidden;
+  display: inline-flex;
+}
+
+.reveal-mask > span {
+  display: inline-block;
+}
+
+.img-mask {
+  overflow: hidden;
+  position: relative;
+}
+
+.img-mask img {
+  will-change: transform;
+}
