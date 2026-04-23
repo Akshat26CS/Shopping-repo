@@ -212,9 +212,9 @@ export function Checkout({ cartItems, onClose, onSuccess }: CheckoutProps) {
 
       {/* Checkout Modal */}
       <div ref={containerRef} className="fixed inset-0 z-[310] overflow-hidden flex items-end md:items-center justify-center">
-        <div className="relative bg-[#121212] w-full md:w-[90vw] lg:w-[800px] max-h-[90vh] overflow-y-auto border border-[#2a2a2a] rounded-t-2xl md:rounded-2xl">
+        <div className="relative bg-[#121212] w-full h-[100dvh] md:h-auto md:w-[90vw] lg:w-[800px] md:max-h-[90vh] overflow-y-auto border-t md:border border-[#2a2a2a] rounded-none md:rounded-2xl flex flex-col">
           {/* Header */}
-          <div className="sticky top-0 bg-[#121212] border-b border-[#2a2a2a] p-6 flex justify-between items-center">
+          <div className="sticky top-0 bg-[#121212] z-10 border-b border-[#2a2a2a] p-6 flex justify-between items-center shrink-0">
             <h2 className="text-[18px] md:text-[24px] font-serif tracking-[-0.5px]">
               {step === 'details' && 'Shipping Details'}
               {step === 'payment' && 'Payment Method'}
