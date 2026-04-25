@@ -16,6 +16,7 @@ import { Wishlist } from './components/Wishlist';
 import { GiftCards } from './components/GiftCards';
 import { Faqs } from './components/Faqs';
 import { Legal } from './components/Legal';
+import { Consultation } from './components/Consultation';
 import { User, LogOut, Menu, ShoppingBag, Heart, X, Package, Bookmark, CreditCard, MapPin, Ticket, ChevronRight, UserCircle, Sparkles } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -41,6 +42,7 @@ export default function App() {
   const [showGiftCards, setShowGiftCards] = useState(false);
   const [showFaqs, setShowFaqs] = useState(false);
   const [showLegal, setShowLegal] = useState(false);
+  const [showConsultation, setShowConsultation] = useState(false);
 
   // State for Profile Details Modal
   const [showProfileDetails, setShowProfileDetails] = useState(false);
@@ -344,6 +346,7 @@ export default function App() {
       )}
       {showFaqs && <Faqs onClose={() => setShowFaqs(false)} />}
       {showLegal && <Legal onClose={() => setShowLegal(false)} />}
+      {showConsultation && <Consultation onClose={() => setShowConsultation(false)} />}
 
       {showHamburgerMenu && (
         <div className="fixed inset-0 z-[450] flex">
@@ -1210,9 +1213,7 @@ export default function App() {
 
           <MagneticButton 
             className="w-[150px] h-[150px] border-border-dark hover:border-gold transition-colors duration-500"
-            onClick={() => {
-              window.location.href = "mailto:atelier@vandana.com?subject=Private%20Consultation%20Request";
-            }}
+            onClick={() => setShowConsultation(true)}
           >
             <span className="flex flex-col items-center active:scale-95 transition-transform duration-300">
               <span className="mb-2 text-[10px] uppercase tracking-[2px] font-semibold">Book</span>
